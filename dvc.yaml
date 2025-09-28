@@ -11,14 +11,14 @@ stages:
     cmd: python src/data_preprocessing.py
     deps:
     - data/raw
-    - data/data_preprocessing.py
+    - src/data_preprocessing.py
     outs:
     - data/interim
   feature_engineering:
     cmd: python src/feature_engineering.py
     deps:
     - data/interim
-    - src/feature_engineering
+    - src/feature_engineering.py
     #params:
     #- feature_engineering.max_features
     outs:
@@ -46,3 +46,8 @@ stages:
 
 
 
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step
